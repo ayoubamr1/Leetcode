@@ -23,7 +23,7 @@ int* twoSum(int* nums, int numsSize, int target, int* returnSize) {
 		i++;
 	}
 	*returnSize = 0;
-	return (NULL);
+	return (0);
 }
 
 /**
@@ -31,7 +31,9 @@ int main ()
 {
 	int arr[] = {5, 9, 7, 0, 6};
 	int	returnsize;
-	int *res = twoSum(arr, 5, 16, &returnsize);
+	int *res = twoSum(arr, 5, 7, &returnsize);
+	if (!res)
+		return (printf("sum not found\n"), 0);
 	int i = 0;
 	while (i < 2)
 	{
