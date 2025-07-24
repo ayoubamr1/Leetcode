@@ -47,11 +47,14 @@
 
  
 #include <string.h>
+#include <stdlib.h>
 
 int lengthOfLongestSubstring(char* s) {
     int map[128] = {0};
     int left = 0, right = 0;
     int maxlen = 0;
+	char	*str;
+	int begin;
 	while (s[right]) {
         char c = s[right];
 		// printf("char c = %c\n", c);
@@ -68,18 +71,23 @@ int lengthOfLongestSubstring(char* s) {
         int windowlen = right - left + 1;
 		// printf("windowlen = %d in loop %d\n", windowlen, right);
         if (windowlen > maxlen)
-            maxlen = windowlen;
+         {
+			maxlen = windowlen;
+			begin = left;
+		 }   
 
         right++;
     }
-
+	char *res = malloc (begin + 1);
+	strncpy(res, &s[begin], maxlen);
+	res[maxlen] = '\0';
+	printf("Longest substring withous duplicates caracters : %s\n", res);
+	free(res);
     return maxlen;
 }
 
-
-
 int main ()
 {
-	int len = lengthOfLongestSubstring(" ");
+	int len = lengthOfLongestSubstring("abcabcbb");
 	printf("[%d]\n", len);
 }
