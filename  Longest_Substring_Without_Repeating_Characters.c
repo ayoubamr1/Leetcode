@@ -59,6 +59,7 @@ int lengthOfLongestSubstring(char* s) {
         char c = s[right];
 		// printf("char c = %c\n", c);
         map[(int)c]++;
+		// printf("c = %d ,", c);
 		// printf("map[(int)%c] = %d\n", c,map[(int)c]);
 
         while (map[(int)c] > 1) {
@@ -67,6 +68,7 @@ int lengthOfLongestSubstring(char* s) {
         	// printf("Removing '%c' at s[%d]\n", s[left], left);
             left++;
         }
+		// printf("left = %d\n", left);
 
         int windowlen = right - left + 1;
 		// printf("windowlen = %d in loop %d\n", windowlen, right);
@@ -75,10 +77,11 @@ int lengthOfLongestSubstring(char* s) {
 			maxlen = windowlen;
 			begin = left;
 		 }   
-
         right++;
     }
-	char *res = malloc (begin + 1);
+	// printf("final maxlen = %d\n", maxlen);
+	// printf("final begin = %d\n", begin);
+	char *res = malloc (maxlen + 1);
 	strncpy(res, &s[begin], maxlen);
 	res[maxlen] = '\0';
 	printf("Longest substring withous duplicates caracters : %s\n", res);
