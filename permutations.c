@@ -40,18 +40,22 @@ void	ft_sort(char *str) /// a b c
 void	permutation(char *str, int start, int end)
 {
 	int i = start;
+	printf("start = %d\n", start);
+	printf("end = %d\n", end);
 	while (i < end)
 	{
 		ft_sort(&str[start]);
-		
+		i++;
 	}
+	puts(str);
 }
 
 int main (int ac , char **av)
 {
 	if (ac != 2)
-		return (0);
+		return (puts("invalid input"), 0);
 	int len = ft_strlen(av[1]);
+	printf("len = %d\n", len);
 	char *str = malloc (len * sizeof(char));
 	strcpy(str, av[1]);
 	permutation(str, 0, len - 1);
